@@ -8,9 +8,26 @@ namespace TestTask
 {
     public class Task
     {
+		//Делегат для задачи
+		private Action _task{ get; set;}
+
+		public Task(Action task)
+		{
+			if (task != null)
+				_task = task;
+			else
+				Console.WriteLine ("Task is null");
+			
+		}
+
         public void Execute()
         {
-            Console.WriteLine("Something to do...");
+			if (_task != null)
+			{
+				_task ();
+				Console.WriteLine ("Task. Something done...");
+			} else
+				Console.WriteLine ("Task failed");
         }
     }
 }
